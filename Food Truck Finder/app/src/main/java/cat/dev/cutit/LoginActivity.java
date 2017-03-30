@@ -66,6 +66,15 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        Button createAccountButton = (Button) findViewById(R.id.create_account_button);
+        createAccountButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO Change BlankActivity to RegisterActivity
+                startActivity(new Intent(LoginActivity.this, BlankActivity.class));
+            }
+        });
+
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
     }
@@ -200,8 +209,7 @@ public class LoginActivity extends AppCompatActivity {
                     return pieces[1].equals(mPassword);
             }
 
-            // TODO: register the new account here.
-            return true;
+            return false;
         }
 
         @Override
