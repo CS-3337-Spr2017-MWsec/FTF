@@ -7,3 +7,5 @@
 /build
 /captures
 .externalNativeBuild
+/app/src/androidTest/java/cat/dev/cutit/
+/app/src/test/java/cat/dev/cutit/
