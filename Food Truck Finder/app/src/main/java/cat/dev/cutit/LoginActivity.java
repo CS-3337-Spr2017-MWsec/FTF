@@ -70,8 +70,7 @@ public class LoginActivity extends AppCompatActivity {
         createAccountButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO Change BlankActivity to RegisterActivity
-                startActivity(new Intent(LoginActivity.this, BlankActivity.class));
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
             }
         });
 

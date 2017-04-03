@@ -18,8 +18,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".BlankActivity">
-        </activity>
+            android:name=".RegisterActivity"
+            android:theme="@style/AppThemeWithoutActionBar" />
+        <activity android:name=".BlankActivity" />
     </application>
 
 </manifest>
