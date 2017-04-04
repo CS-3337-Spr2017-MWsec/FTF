@@ -38,7 +38,7 @@ public class RegisterActivity extends AppCompatActivity {
             // mFirebaseAuth.createUserWithEmailAndPassword(email, password)
             //         .addOnCompleteListener(...);
 
-            startActivity(new Intent(this, BlankActivity.class));
+            startActivity(new Intent(this, MainActivity.class));
         } else {
             mConfirmPasswordView.setError("Password does not match!");
             mConfirmPasswordView.requestFocus();

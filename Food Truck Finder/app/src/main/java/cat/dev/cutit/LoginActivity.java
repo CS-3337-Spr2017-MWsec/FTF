@@ -218,7 +218,7 @@ public class LoginActivity extends AppCompatActivity {
 
             if (success) {
                 // Following doInBackground, if the result is true then start a new activity
-                startActivity(new Intent(LoginActivity.this, BlankActivity.class));
+                startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 finish();
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
