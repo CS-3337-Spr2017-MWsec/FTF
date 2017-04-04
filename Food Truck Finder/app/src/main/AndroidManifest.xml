@@ -20,7 +20,10 @@
         <activity
             android:name=".RegisterActivity"
             android:theme="@style/AppThemeWithoutActionBar" />
-        <activity android:name=".BlankActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:label=""
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
