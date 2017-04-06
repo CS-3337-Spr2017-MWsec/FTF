@@ -21,10 +21,14 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, new GoogleMapsFragment())
+                .commit();
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        // drawer.setDrawerListener(toggle); Deprecated in 23.2.0; use addDrawerListener()
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
@@ -69,7 +73,10 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, new GoogleMapsFragment())
+                    .commit();
         } // TODO else if (id == R.id.nav_) { etc...
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
