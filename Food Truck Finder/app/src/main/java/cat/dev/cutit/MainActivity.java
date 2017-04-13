@@ -77,7 +77,12 @@ public class MainActivity extends AppCompatActivity
                     .beginTransaction()
                     .replace(R.id.fragment_container, new GoogleMapsFragment())
                     .commit();
-        } // TODO else if (id == R.id.nav_) { etc...
+        } else if (id == R.id.nav_payment) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, new PaymentFragment())
+                    .commit();
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
