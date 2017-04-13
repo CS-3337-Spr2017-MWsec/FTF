@@ -17,6 +17,7 @@ public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        getActivity().setTitle("Home");
         return inflater.inflate(R.layout.fragment_google_maps, container, false);
     }
 
