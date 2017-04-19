@@ -10,6 +10,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -34,6 +38,20 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+
+        if (user != null) {
+            TextView fullName = (TextView) navigationView.getHeaderView(0)
+                    .findViewById(R.id.nav_header_full_name);
+            TextView email = (TextView) navigationView.getHeaderView(0)
+                    .findViewById(R.id.nav_header_email);
+
+            // TODO Query for user's first and last names
+            fullName.setText(R.string.placeholder_name);
+            email.setText(user.getEmail());
+        }
     }
 
     @Override
