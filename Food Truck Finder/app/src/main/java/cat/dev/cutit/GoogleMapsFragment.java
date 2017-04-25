@@ -22,6 +22,8 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback, LocationListener {
 
@@ -116,6 +118,9 @@ public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback, 
 
                     mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
                             new LatLng(lat, lng), 15.0f));
+
+                    createMarker(34.07357, -118.16394, "Angie's", "");
+                    createMarker(34.059346, -118.172533, "Las Ranas", "");
                 }
             }
         }
@@ -126,5 +131,17 @@ public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback, 
             if (permission.equals(permissions[i]))
                 return results[i] == PackageManager.PERMISSION_GRANTED;
         return false;
+    }
+
+    private Marker createMarker(double latitude, double longitude, String title, String description) {
+        Log.d(TAG, "createMarker");
+
+        return mGoogleMap.addMarker(
+                new MarkerOptions()
+                        .position(new LatLng(latitude, longitude))
+                        .anchor(0.5f, 0.5f)
+                        .title(title)
+                        .snippet(description)
+        );
     }
 }
