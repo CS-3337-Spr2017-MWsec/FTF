@@ -21,9 +21,13 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback, LocationListener {
 
@@ -53,6 +57,11 @@ public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback, 
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;
         mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(0, 0), 1.0f));
+
+        UiSettings settings = mGoogleMap.getUiSettings();
+        settings.setCompassEnabled(true);
+        settings.setMyLocationButtonEnabled(true);
+        settings.setZoomControlsEnabled(true);
 
         enableMyLocation();
     }
@@ -121,6 +130,14 @@ public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback, 
 
                     createMarker(34.07357, -118.16394, "Angie's", "");
                     createMarker(34.059346, -118.172533, "Las Ranas", "");
+
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+                    if (user != null) {
+                        FirebaseDatabase.getInstance()
+                                .getReference("/users/" + user.getUid() + "/location")
+                                .setValue(location);
+                    }
                 }
             }
         }
