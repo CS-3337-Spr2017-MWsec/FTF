@@ -23,6 +23,9 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback, LocationListener {
 
@@ -122,6 +125,14 @@ public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback, 
 
                     mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
                             new LatLng(lat, lng), 15.0f));
+
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+                    if (user != null) {
+                        FirebaseDatabase.getInstance()
+                                .getReference("/users/" + user.getUid() + "/location")
+                                .setValue(location);
+                    }
                 }
             }
         }
