@@ -21,6 +21,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
 
 public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback, LocationListener {
@@ -51,6 +52,11 @@ public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback, 
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;
         mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(0, 0), 1.0f));
+
+        UiSettings settings = mGoogleMap.getUiSettings();
+        settings.setCompassEnabled(true);
+        settings.setMyLocationButtonEnabled(true);
+        settings.setZoomControlsEnabled(true);
 
         enableMyLocation();
     }
