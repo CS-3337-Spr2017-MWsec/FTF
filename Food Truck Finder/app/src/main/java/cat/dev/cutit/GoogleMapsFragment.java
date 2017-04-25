@@ -23,7 +23,6 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -150,15 +149,13 @@ public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback, 
         return false;
     }
 
-    private Marker createMarker(double latitude, double longitude, String title, String description) {
-        Log.d(TAG, "createMarker");
-
-        return mGoogleMap.addMarker(
-                new MarkerOptions()
-                        .position(new LatLng(latitude, longitude))
-                        .anchor(0.5f, 0.5f)
-                        .title(title)
-                        .snippet(description)
+    private void createMarker(double latitude, double longitude, String title, String description) {
+        mGoogleMap.addMarker(
+            new MarkerOptions()
+                    .position(new LatLng(latitude, longitude))
+                    .anchor(0.5f, 0.5f)
+                    .title(title)
+                    .snippet(description)
         );
     }
 }
