@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 public class PlaceOrderFragment extends Fragment {
 
-    DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+    private DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
     private static String TAG = "PlaceOrderFragment";
     private int MAX_ORDER_ITEMS = 20;
     private int totalOrderItems = 0;
@@ -34,7 +34,6 @@ public class PlaceOrderFragment extends Fragment {
 
 
     private FirebaseAuth mAuthentication;
-    final FirebaseDatabase database = FirebaseDatabase.getInstance();
 
     @Override
 
@@ -44,23 +43,6 @@ public class PlaceOrderFragment extends Fragment {
         getActivity().setTitle("Place Order");
         return inflater.inflate(R.layout.fragment_place_order, container, false);
 
-
-    }
-
-    public static class Dinosaur {
-
-        public int height;
-        public int weight;
-
-        public Dinosaur(int height, int weight) {
-            // ...
-        }
-
-    }
-
-
-
-    public void getMenu(String vendorId){
 
     }
 
