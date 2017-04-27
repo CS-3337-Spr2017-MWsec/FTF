@@ -8,12 +8,18 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -40,17 +46,33 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = firebaseAuth.getCurrentUser();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
-        if (user != null) {
-            TextView fullName = (TextView) navigationView.getHeaderView(0)
+        if (firebaseUser != null) {
+            final TextView fullName = (TextView) navigationView.getHeaderView(0)
                     .findViewById(R.id.nav_header_full_name);
             TextView email = (TextView) navigationView.getHeaderView(0)
                     .findViewById(R.id.nav_header_email);
 
-            // TODO Query for user's first and last names
-            fullName.setText(R.string.placeholder_name);
-            email.setText(user.getEmail());
+            DatabaseReference reference = FirebaseDatabase.getInstance()
+                    .getReference("/users/" + firebaseUser.getUid());
+
+            reference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Log.d("onDataChange", dataSnapshot.toString());
+                    User user = dataSnapshot.getValue(User.class);
+
+                    fullName.setText(user.firstName + " " + user.lastName);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Log.w("onCancelled", databaseError.toException());
+                }
+            });
+
+            email.setText(firebaseUser.getEmail());
         }
     }
 
