@@ -31,4 +31,5 @@
     <!-- Placeholders -->
     <string name="placeholder_name">Full Name</string>
     <string name="placeholder_email">email@example.com</string>
+    <string name="title_activity_place_order">PlaceOrderActivity</string>
 </resources>

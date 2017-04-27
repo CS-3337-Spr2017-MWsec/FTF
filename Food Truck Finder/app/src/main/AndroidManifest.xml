@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="cat.dev.cutit">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cat.dev.cutit">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
@@ -10,10 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="YOUR_API_KEY_HERE!" />
+            android:value="AIzaSyD-OAHPFxJEXI08vFcWx6YI_vM0SOVhdwg" />
 
         <activity
             android:name=".LoginActivity"
@@ -31,6 +31,13 @@
             android:name=".MainActivity"
             android:label=""
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".InfoViewActivity"
+            android:label="Info" />
+        <activity
+            android:name=".PlaceOrderActivity"
+            android:label="@string/title_activity_place_order"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
