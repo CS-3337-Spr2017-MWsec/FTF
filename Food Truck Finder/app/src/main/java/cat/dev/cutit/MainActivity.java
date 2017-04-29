@@ -1,5 +1,6 @@
 package cat.dev.cutit;
 
+import android.app.NotificationManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -7,6 +8,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,6 +19,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    NotificationCompat.Builder mBuilder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +56,17 @@ public class MainActivity extends AppCompatActivity
             fullName.setText(R.string.placeholder_name);
             email.setText(user.getEmail());
         }
+
+        mBuilder = new NotificationCompat.Builder(this)
+                        .setSmallIcon(R.drawable.ic_stat_name)
+                        .setContentTitle("Food Truck Finder")
+                        .setContentText("Your order is ready for pick up");
+
+        int mNotificationId = 001;
+        // Gets an instance of the NotificationManager service
+        NotificationManager mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        // Builds the notification and issues it.
+        mNotifyMgr.notify(mNotificationId, mBuilder.build());
     }
 
     @Override
