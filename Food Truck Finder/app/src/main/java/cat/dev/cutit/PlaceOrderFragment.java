@@ -50,7 +50,7 @@ public class PlaceOrderFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                Fragment fragment = new CompletedOrderFragment();
+                Fragment fragment = new OrderPaymentFragment();
 
                 FragmentManager fragmentManager = getFragmentManager();
 
