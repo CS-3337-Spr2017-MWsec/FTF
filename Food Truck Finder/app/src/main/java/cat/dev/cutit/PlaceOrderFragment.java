@@ -1,10 +1,15 @@
 package cat.dev.cutit;
 
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -36,8 +41,23 @@ public class PlaceOrderFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         getActivity().setTitle("Place Order");
-        return inflater.inflate(R.layout.fragment_place_order, container, false);
 
+        View view = inflater.inflate(R.layout.fragment_place_order, container, false);
+
+        Button login = (Button)view.findViewById(R.id.place_order_button);
+
+        login.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new CompletedOrderFragment();
+
+                FragmentManager fragmentManager = getFragmentManager();
+
+                fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).commit();
+            }
+        });
+        return view;
 
     }
     public void getOrder(){
