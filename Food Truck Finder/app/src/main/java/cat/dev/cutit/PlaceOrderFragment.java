@@ -60,20 +60,6 @@ public class PlaceOrderFragment extends Fragment {
         return view;
 
     }
-    public void getOrder(){
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Order order = dataSnapshot.getValue(Order.class);
-                System.out.println(order);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                System.out.println("The read failed: " + databaseError.getCode());
-            }
-        });
-    }
 
 
 }
