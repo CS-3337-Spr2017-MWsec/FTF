@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity
                     Log.d("onDataChange", dataSnapshot.toString());
                     User user = dataSnapshot.getValue(User.class);
 
-                    fullName.setText(user.firstName + " " + user.lastName);
+                    fullName.setText(user.getFirstName() + " " + user.getLastName());
                 }
 
                 @Override

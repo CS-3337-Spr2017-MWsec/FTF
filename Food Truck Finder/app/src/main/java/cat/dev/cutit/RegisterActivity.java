@@ -116,9 +116,9 @@ public class RegisterActivity extends AppCompatActivity {
 
                                 if (firebaseUser != null) {
                                     User user = new User();
-                                    user.firstName = firstName;
-                                    user.lastName = lastName;
-                                    user.email = email;
+                                    user.setFirstName(firstName);
+                                    user.setLastName(lastName);
+                                    user.setEmail(email);
 
                                     databaseReference.child("/users/" + firebaseUser.getUid())
                                             .setValue(user);
