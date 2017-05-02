@@ -168,12 +168,6 @@
 
             </LinearLayout>
 
-            <Button
-                android:id="@+id/place_order_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Place Order" />
-
         </LinearLayout>
 
     </FrameLayout>
