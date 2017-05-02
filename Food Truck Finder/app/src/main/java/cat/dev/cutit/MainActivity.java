@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_orders) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.fragment_container, new PlaceOrderFragment())
+                    .replace(R.id.fragment_container, new ViewOrdersFragment())
                     .commit();
         }
 
