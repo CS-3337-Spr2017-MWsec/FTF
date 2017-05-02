@@ -1,10 +1,12 @@
 package cat.dev.cutit;
 
 import android.app.NotificationManager;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +24,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import android.view.Gravity;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -88,6 +91,12 @@ public class MainActivity extends AppCompatActivity
         NotificationManager mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         // Builds the notification and issues it.
         mNotifyMgr.notify(1, mBuilder.build());
+        TextView orders = (TextView) MenuItemCompat.getActionView(navigationView.getMenu()
+                .findItem(R.id.nav_orders));
+        orders.setGravity(Gravity.CENTER_VERTICAL);
+        orders.setTypeface(null, Typeface.BOLD);
+        orders.setTextColor(getResources().getColor(R.color.colorAccent));
+        orders.setText("0");
     }
 
     @Override
