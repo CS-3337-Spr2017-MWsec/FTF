@@ -84,11 +84,10 @@ public class MainActivity extends AppCompatActivity
                         .setContentTitle("Food Truck Finder")
                         .setContentText("Your order is ready for pick up");
 
-        int mNotificationId = 001;
         // Gets an instance of the NotificationManager service
         NotificationManager mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         // Builds the notification and issues it.
-        mNotifyMgr.notify(mNotificationId, mBuilder.build());
+        mNotifyMgr.notify(1, mBuilder.build());
     }
 
     @Override
