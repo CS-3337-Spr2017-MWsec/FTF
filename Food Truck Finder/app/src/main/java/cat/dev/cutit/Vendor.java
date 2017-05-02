@@ -4,12 +4,7 @@ class Vendor extends User {
     private boolean active;
     private BusinessHours businessHours;
     private int rating;
-    private Location location;
     private String businessName;
-
-    static class BusinessHours {
-
-    }
 
     public boolean isActive() {
         return active;
@@ -35,19 +30,15 @@ class Vendor extends User {
         this.rating = rating;
     }
 
-    public Location getLocation() {
-        return location;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
-    }
-
     public String getBusinessName() {
         return businessName;
     }
 
     public void setBusinessName(String businessName) {
         this.businessName = businessName;
+    }
+
+    static class BusinessHours {
+
     }
 }
