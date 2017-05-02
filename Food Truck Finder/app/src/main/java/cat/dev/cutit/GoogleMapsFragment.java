@@ -179,9 +179,6 @@ public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback, 
                         }
                     });
 
-                    createMarker(34.07357, -118.16394, "Angie's", "");
-                    createMarker(34.059346, -118.172533, "Las Ranas", "");
-
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
                     if (user != null) {
