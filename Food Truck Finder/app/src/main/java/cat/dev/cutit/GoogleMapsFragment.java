@@ -157,7 +157,8 @@ public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback, 
 
                                     createMarker(vendor.getLocation().getLatitude(),
                                             vendor.getLocation().getLongitude(),
-                                            vendor.getBusinessName(), "");
+                                            vendor.getBusinessName(), vendor.getDescription(),
+                                            dataSnapshot.getKey());
                                 }
                             }
                         }
@@ -202,18 +203,22 @@ public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback, 
         return false;
     }
 
-    private void createMarker(double latitude, double longitude, String title, String description) {
-        mGoogleMap.addMarker(
+    private void createMarker(double latitude, double longitude, String title,
+                              String description, String id) {
+
+        Marker marker = mGoogleMap.addMarker(
             new MarkerOptions()
                     .position(new LatLng(latitude, longitude))
                     .anchor(0.5f, 0.5f)
                     .title(title)
                     .snippet(description)
         );
+
+        marker.setTag(id);
     }
 
     @Override
     public void onInfoWindowClick(Marker marker) {
-
+        Log.i("onInfoWindowClick", (String) marker.getTag());
     }
 }

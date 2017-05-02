@@ -5,6 +5,7 @@ class Vendor extends User {
     private BusinessHours businessHours;
     private int rating;
     private String businessName;
+    private String description;
 
     public boolean isActive() {
         return active;
@@ -36,6 +37,14 @@ class Vendor extends User {
 
     public void setBusinessName(String businessName) {
         this.businessName = businessName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     static class BusinessHours {
