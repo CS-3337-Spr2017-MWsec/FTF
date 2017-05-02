@@ -2,6 +2,7 @@ package cat.dev.cutit;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -219,6 +220,9 @@ public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback, 
 
     @Override
     public void onInfoWindowClick(Marker marker) {
-        Log.i("onInfoWindowClick", (String) marker.getTag());
+        Intent intent = new Intent(getContext(), InfoViewActivity.class);
+        intent.putExtra("id", (String) marker.getTag());
+
+        getActivity().startActivity(intent);
     }
 }

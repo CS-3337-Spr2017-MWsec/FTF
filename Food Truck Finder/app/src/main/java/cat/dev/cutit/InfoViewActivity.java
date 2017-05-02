@@ -2,6 +2,7 @@ package cat.dev.cutit;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 public class InfoViewActivity extends AppCompatActivity {
 
@@ -9,5 +10,7 @@ public class InfoViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_view);
+
+        Log.i("InfoViewActivity", getIntent().getStringExtra("id"));
     }
 }
