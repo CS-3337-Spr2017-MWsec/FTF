@@ -19,10 +19,12 @@ import android.view.ViewGroup;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -33,7 +35,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.maps.android.SphericalUtil;
 
-public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback, LocationListener {
+public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback, LocationListener,
+        OnInfoWindowClickListener {
 
     private static final String TAG = "GoogleMapsFragment";
 
@@ -61,6 +64,7 @@ public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback, 
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;
         mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(0, 0), 1.0f));
+        mGoogleMap.setOnInfoWindowClickListener(this);
 
         UiSettings settings = mGoogleMap.getUiSettings();
         settings.setCompassEnabled(true);
@@ -206,5 +210,10 @@ public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback, 
                     .title(title)
                     .snippet(description)
         );
+    }
+
+    @Override
+    public void onInfoWindowClick(Marker marker) {
+
     }
 }
