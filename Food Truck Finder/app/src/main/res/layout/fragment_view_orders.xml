@@ -1,0 +1,181 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="cat.dev.cutit.ViewOrdersFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="75dp"
+        tools:context="cat.dev.cutit.PlaceOrderFragment">
+
+        <!-- TODO: Update blank fragment layout -->
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="16dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="75dp"
+            tools:context="cat.dev.cutit.RegisterActivity">
+
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="387dp"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.05"
+                android:text="Order History"
+                android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                android:visibility="visible" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="329dp"
+                android:layout_weight="1.26"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="386dp"
+                    android:orientation="vertical"
+                    android:weightSum="1">
+
+                    <EditText
+                        android:id="@+id/editText"
+                        style="@android:style/Widget.AutoCompleteTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:enabled="false"
+                        android:inputType="none"
+                        android:selectAllOnFocus="false"
+                        android:text="Pending Orders"
+                        tools:inputType="none" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:id="@+id/textView5"
+                            android:layout_width="234dp"
+                            android:layout_height="33dp"
+                            android:layout_weight="0.70"
+                            android:text="Angies Taco's (5/1/2017)" />
+
+                        <Button
+                            android:id="@+id/view_order_button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="View" />
+
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/itemText"
+                        style="@android:style/Widget.AutoCompleteTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:enabled="false"
+                        android:inputType="none"
+                        android:selectAllOnFocus="false"
+                        android:text="Previous Orders"
+                        tools:inputType="none" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:id="@+id/textView5"
+                            android:layout_width="234dp"
+                            android:layout_height="33dp"
+                            android:layout_weight="0.70"
+                            android:text="Mac and Cheese Truck (4/25/2017)" />
+
+                        <Button
+                            android:id="@+id/button4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="View" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:id="@+id/textView5"
+                            android:layout_width="234dp"
+                            android:layout_height="33dp"
+                            android:layout_weight="0.70"
+                            android:text="Yummy Truck (4/13/2017)" />
+
+                        <Button
+                            android:id="@+id/button4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="View" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:id="@+id/textView5"
+                            android:layout_width="234dp"
+                            android:layout_height="33dp"
+                            android:layout_weight="0.70"
+                            android:text="Pizza Truck (4/2/2017)" />
+
+                        <Button
+                            android:id="@+id/button4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="View" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/place_order_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Place Order" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</FrameLayout>
