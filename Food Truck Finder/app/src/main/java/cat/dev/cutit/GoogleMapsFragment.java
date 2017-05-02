@@ -26,7 +26,12 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.maps.android.SphericalUtil;
 
 public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback, LocationListener {
 
@@ -121,11 +126,58 @@ public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback, 
                 if (location != null) {
                     Log.i(TAG, location.getLatitude() + " " + location.getLongitude());
 
-                    double lat = location.getLatitude();
-                    double lng = location.getLongitude();
+                    final LatLng currentLatLng = new LatLng(
+                            location.getLatitude(), location.getLongitude());
 
-                    mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
-                            new LatLng(lat, lng), 15.0f));
+                    mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 15.0f));
+
+                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+                    reference.child("vendors").orderByValue().addChildEventListener(
+                            new ChildEventListener() {
+                        @Override
+                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                            Log.d("onChildAdded", dataSnapshot.toString());
+                            Vendor vendor = dataSnapshot.getValue(Vendor.class);
+
+                            LatLng vendorLatLng = new LatLng(
+                                    vendor.getLocation().getLatitude(),
+                                    vendor.getLocation().getLongitude());
+
+                            if (vendor.isActive()) {
+                                double distance = SphericalUtil.computeDistanceBetween(
+                                        currentLatLng, vendorLatLng);
+
+                                // 8046.72 meters is equivalent to 5 miles
+                                if (distance <= 8046.72) {
+                                    Log.i("onChildAdded", vendor.getBusinessName());
+
+                                    createMarker(vendor.getLocation().getLatitude(),
+                                            vendor.getLocation().getLongitude(),
+                                            vendor.getBusinessName(), "");
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                        }
+
+                        @Override
+                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                        }
+
+                        @Override
+                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
 
                     createMarker(34.07357, -118.16394, "Angie's", "");
                     createMarker(34.059346, -118.172533, "Las Ranas", "");
