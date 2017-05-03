@@ -39,6 +39,7 @@ import com.google.maps.android.SphericalUtil;
 public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback, LocationListener,
         OnInfoWindowClickListener {
 
+    public static final String EXTRA_VENDOR_ID = "VENDOR";
     private static final String TAG = "GoogleMapsFragment";
 
     private GoogleMap mGoogleMap;
@@ -221,7 +222,7 @@ public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback, 
     @Override
     public void onInfoWindowClick(Marker marker) {
         Intent intent = new Intent(getContext(), InfoViewActivity.class);
-        intent.putExtra("id", (String) marker.getTag());
+        intent.putExtra(EXTRA_VENDOR_ID, (String) marker.getTag());
 
         getActivity().startActivity(intent);
     }

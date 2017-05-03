@@ -11,6 +11,6 @@ public class InfoViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_view);
 
-        Log.i("InfoViewActivity", getIntent().getStringExtra("id"));
+        Log.i("InfoViewActivity", getIntent().getStringExtra(GoogleMapsFragment.EXTRA_VENDOR_ID));
     }
 }
