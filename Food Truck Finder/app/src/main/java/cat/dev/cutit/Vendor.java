@@ -1,11 +1,27 @@
 package cat.dev.cutit;
 
+import java.util.ArrayList;
+
 class Vendor extends User {
+
+    private ArrayList<MenuItem> menu;
     private boolean active;
     private BusinessHours businessHours;
     private int rating;
     private String businessName;
     private String description;
+
+    Vendor() {
+
+    }
+
+    public ArrayList<MenuItem> getMenu() {
+        return menu;
+    }
+
+    public void setMenu(ArrayList<MenuItem> menu) {
+        this.menu = menu;
+    }
 
     public boolean isActive() {
         return active;

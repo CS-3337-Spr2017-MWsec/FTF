@@ -31,4 +31,19 @@
     <!-- Placeholders -->
     <string name="placeholder_name">Full Name</string>
     <string name="placeholder_email">email@example.com</string>
+
+    <!-- Strings related to information view activity -->
+    <string name="action_placer_order">Place Order</string>
+    <string name="placeholder_business_name">Business Name</string>
+    <string name="placeholder_business_description">Description</string>
+    <string name="placeholder_business_hours">Mon - Fri: 12:00pm - 11:00pm</string>
+
+    <!-- Menu item placeholders -->
+    <string name="menu_item_content_description">Menu item image</string>
+    <string name="menu_item_name">Name</string>
+    <string name="menu_item_description">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+        ut labore et dolore magna aliqua.
+    </string>
+    <string name="menu_item_price">$0.00</string>
 </resources>
